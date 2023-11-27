@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>哈尔滨广厦学院</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"   >
+    <style>
+
+        /**
+         *      上下垂直居中，窗口从大到小
+         **/
+        .main{
+            text-align: center; /*让div内部文字居中*/
+            background-color: #fff;
+            border-radius: 20px;
+            width: 1000px;
+            height: 350px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 22%;
+        }
+
+        /**
+         *      从大到小缩放
+         **/
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both
+        }
+
+        .zoomIn {
+            -webkit-animation-name: zoomIn;
+            animation-name: zoomIn
+        }
+
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale3d(.3,.3,.3);
+                transform: scale3d(.3,.3,.3)
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div>
+    <div style="width:500px;">
+        <div class="main animated zoomIn">
+            <a href="/Hi">Go Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="${downurl}">Download</a>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr  th:each="user:${list}">
+                        <th scope="row" style="width:20px"></th>
+                        <td th:text="${user.name}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+<script  th:src="@{/js/jquery.min.js}"></script>
+<script  th:src="@{/js/bootstrap.js}"></script>
+<script  th:src="@{/js/bootstrap.bundle.js}"></script>
+
+<script>
+    function refresh() {
+        document.getElementById("captchaPic").src = "getCode?time=" + new Date().getTime();
+    }
+</script>
+</html>

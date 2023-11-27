@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>哈尔滨广厦学院</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"   >
+    <style>
+
+        /**
+         *      上下垂直居中，窗口从大到小
+         **/
+        .main{
+            text-align: center; /*让div内部文字居中*/
+            background-color: #fff;
+            border-radius: 20px;
+            width: 1000px;
+            height: 350px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 22%;
+        }
+
+        /**
+         *      从大到小缩放
+         **/
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both
+        }
+
+        .zoomIn {
+            -webkit-animation-name: zoomIn;
+            animation-name: zoomIn
+        }
+
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale3d(.3,.3,.3);
+                transform: scale3d(.3,.3,.3)
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div>
+    <div style="width:500px;">
+        <div class="main animated zoomIn">
+            <form action="/Hello" method="post" id="submit" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="numbers">抽取人的个数</label> <a href="http://114.116.223.181:8100/system/getimage?url=5c709953-da43-4f42-8bfd-55d8599ecc4d.xlsx">Download excel template</a>
+                    <input type="text" class="form-control" id="numbers" name="numbers" aria-describedby="emailHelp">
+                </div>
+
+                <input type="file" id="customFile" name="file" accept=".xls, .xlsx">
+                <label for="customFile">Choose file</label>
+
+                <div style="margin-top: 30px">
+                    &nbsp;
+                </div>
+
+                <button  class="btn btn-lg btn-primary btn-block"   style="width:100%;height: 50px;" > 上传Excel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+<script  th:src="@{/js/jquery.min.js}"></script>
+<script  th:src="@{/js/bootstrap.js}"></script>
+<script  th:src="@{/js/bootstrap.bundle.js}"></script>
+
+<script>
+    function refresh() {
+        document.getElementById("captchaPic").src = "getCode?time=" + new Date().getTime();
+    }
+</script>
+</html>
